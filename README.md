@@ -1,5 +1,7 @@
 ### Tech Stack:
-### Frontend/Backend: NextJS, Supabase
+### Frontend: NextJS, TailwindCSS
+### Backend: NextJS, Supabase
+### Deployment: Vercel
 
 ### Presentation Link: https://entuedu-my.sharepoint.com/:p:/g/personal/ngwe0105_e_ntu_edu_sg/EWBW5w3BGUBCgPdHzcVjMSABfcX0WBKY200HDmDvO0nRbw?e=U2hK74
 
