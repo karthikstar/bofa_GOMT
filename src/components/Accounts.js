@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Form from './Form'
 import TradeProcessingEngine from './TradeProcessingEngine'
+import PendingApprovalTable from './PendingApprovalTable'
 
 export default function Account({ session }) {
   const supabase = useSupabaseClient()
@@ -10,10 +11,39 @@ export default function Account({ session }) {
   const [username, setUsername] = useState(null)
   const [role, setRole] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
+  // const [pendingArray, setPendingArray] = useState(null)
 
   useEffect(() => {
     getProfile()
+    // getPending()
   }, [session])
+
+  async function getPending() {
+        
+    const data = {user: user}
+
+    const JSONdata = JSON.stringify(data);
+
+    try {
+        const response = await fetch('/api/getPending', {
+          method: 'POST',
+          body: JSONdata,
+        })
+  
+        const payload = await response.json()
+
+        if (response.ok) {
+          // Handle successful form submission
+          console.log('chk:',payload.data.data)
+          setPendingArray(payload.data.data)
+          return payload.data.data;
+        }
+      } catch (error) {
+        // Handle fetch error
+        console.error('Error:', error);
+      }
+
+}
 
   async function getProfile() {
     try {
@@ -109,6 +139,7 @@ export default function Account({ session }) {
     </div>
     <Form user = {user.email}></Form>
     <TradeProcessingEngine user = {user.email}></TradeProcessingEngine>
+    <PendingApprovalTable ></PendingApprovalTable>
     </div>
   )
 }

@@ -242,6 +242,7 @@ input[disabled] {
 
 button,
 .button {
+  background-color: red !important;
   color: var(--custom-color);
   border: var(--custom-border);
   background-color: var(--custom-bg-color);
