@@ -50,7 +50,7 @@ export async function submit(clientID, grossAmountDifference, commissionDifferen
     .insert({grossamount_difference: grossAmountDifference, commission_difference: commissionDifference, approval_status: "PENDING", client_id: clientID, user_id: userID})
 }
 
-export async function approve(clientID, configID, approverID, editComments){
+export async function approve(clientID, configID, approverID, editComments="Approved the change."){
     await supabase.from('current_info')
         .update({approval_status: "EXPIRED"})
         .eq('id', clientID)
