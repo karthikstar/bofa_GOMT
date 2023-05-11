@@ -12,9 +12,6 @@ export default async function handler(req, res) {
     console.log(clientID)
 
 
-    // const sampleconfig = await getConfig(4);
-    // console.log('config:' , sampleconfig)
-
     const submitConfig = await submit(clientID, grossAmountDifference, commisionDifference, user);
     console.log(submitConfig)
     

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Form from './Form'
+import TradeProcessingEngine from './TradeProcessingEngine'
 
 export default function Account({ session }) {
   const supabase = useSupabaseClient()
@@ -107,7 +108,7 @@ export default function Account({ session }) {
       </div>
     </div>
     <Form user = {user.email}></Form>
-
+    <TradeProcessingEngine user = {user.email}></TradeProcessingEngine>
     </div>
   )
 }
