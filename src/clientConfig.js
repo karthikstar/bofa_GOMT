@@ -32,9 +32,8 @@ export async function getVersions(clientID){
 }
 
 export async function submit(clientID, grossAmountDifference, commissionDifference, userID){
-    await supabase.from('current_info')
-    .insert({grossamount_difference: grossAmountDifference, commission_difference: commissionDifference, approval_status: "PENDING", 
-        active_status: false, time: Date.now(), client_id: clientID, user_id: userID})
+    return await supabase.from('current_info')
+    .insert({grossamount_difference: grossAmountDifference, commission_difference: commissionDifference, approval_status: "PENDING", client_id: clientID, user_id: userID})
 }
 
 export async function approve(clientID, configID, approverID, editComments){
