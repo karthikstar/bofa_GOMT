@@ -25,13 +25,27 @@ export async function getPending(userID){
         .neq('user_id', userID)
 }
 
-export async function getVersions(clientID){
+export async function getVersions(){
+    return await supabase.from('archive_info')
+        .select('id, client_id, time, snapshot, edit_comments')
+}
+
+export async function getVersionByClient(clientID){
     return await supabase.from('archive_info')
         .select('id, client_id, time, snapshot, edit_comments')
         .eq('client_id', clientID)
 }
 
 export async function submit(clientID, grossAmountDifference, commissionDifference, userID){
+    pendingExists = await supabase.from('current_info')
+        .select('id')
+        .eq('id', clientID)
+        .eq('approval_status', "PENDING")
+
+    if (pendingExists == null){
+        return null;
+    }
+
     return await supabase.from('current_info')
     .insert({grossamount_difference: grossAmountDifference, commission_difference: commissionDifference, approval_status: "PENDING", client_id: clientID, user_id: userID})
 }
