@@ -61,13 +61,22 @@ export async function rollback(archiveID){
     
     await supabase.from('current_info')
         .update({"approval_status": "EXPIRED"})
-        .eq('id', clientID) //clientID get from snapshot
+        .eq('client_id', currentSnapshot.client_id) //clientID get from snapshot
         .eq("approval_status", "APPROVED")
 
     await supabase.from('current_info')
         .insert({approver_id: currentSnapshot.approver_id, grossamount_difference: currentSnapshot.grossamount_difference, 
-            commission_difference: currentSnapshot.commission_difference, approval_status: currentSnapshot.approval_status, 
-            time: currentSnapshot.time, client_id: currentSnapshot.client_id, user_id: currentSnapshot.user_id}) //insert columns 
+            commission_difference: currentSnapshot.commission_difference, approval_status: "APPROVED", 
+            time: currentSnapshot.time, client_id: currentSnapshot.client_id, user_id: currentSnapshot.user_id}) //insert columns
+
+    configID = await supabase.from('current_info')
+            .select('id')
+            .eq('client_id', currentSnapshot.client_id)
+
+    newSnapshot = snapshot(configID.id)
+
+    await supabase.from('archive_info')
+        .insert({snapshot: newSnapshot, edit_comments: "Rollback", client_id: currentSnapshot.client_id})
 }
 
 export async function snapshot(configID){
