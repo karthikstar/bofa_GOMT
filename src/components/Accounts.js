@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import Form from './Form'
 
 export default function Account({ session }) {
   const supabase = useSupabaseClient()
@@ -64,6 +65,7 @@ export default function Account({ session }) {
   }
 
   return (
+    <div className='account-page'>
     <div className="form-widget">
       <div>
         <label htmlFor="email">Email</label>
@@ -103,6 +105,9 @@ export default function Account({ session }) {
           Sign Out
         </button>
       </div>
+    </div>
+    <Form user = {user.email}></Form>
+
     </div>
   )
 }
