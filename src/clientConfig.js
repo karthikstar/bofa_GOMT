@@ -20,7 +20,7 @@ export async function getConfig(clientID){
 
 export async function getPending(userID){
     return await supabase.from('current_info')
-        .select('id, client_id, commission_difference, grossamount_difference')
+        .select('id, client_id, commission_difference, grossamount_difference, requester_id')
         .eq('approval_status', 'PENDING')
         .neq('user_id', userID)
 }
