@@ -15,7 +15,7 @@ export async function getConfig(clientID){
     return await supabase.from('current_info')
         .select('client_id, commission_difference, grossamount_difference')
         .eq('client_id', clientID)
-        .eq('active_status', true)
+        .eq('approval_status', "APPROVED")
 }
 
 export async function getPending(userID){
@@ -38,12 +38,12 @@ export async function submit(clientID, grossAmountDifference, commissionDifferen
 
 export async function approve(clientID, configID, approverID, editComments){
     await supabase.from('current_info')
-        .update({active_status: false})
+        .update({approval_status: "EXPIRED"})
         .eq('id', clientID)
-        .eq('active_status', true)
+        .eq('approval_status', "APPROVED")
 
     await supabase.from('current_info')
-        .update({approval_status: "APPROVED", approver_id: approverID, active_status: true})
+        .update({approval_status: "APPROVED", approver_id: approverID})
         .eq('id', configID)
     
     currentSnapshot = snapshot(configID)
@@ -60,14 +60,14 @@ export async function rollback(archiveID){
 
     
     await supabase.from('current_info')
-        .update({active_status: false})
+        .update({"approval_status": "EXPIRED"})
         .eq('id', clientID) //clientID get from snapshot
-        .eq('active_status', true)
+        .eq("approval_status", "APPROVED")
 
     await supabase.from('current_info')
         .insert({approver_id: currentSnapshot.approver_id, grossamount_difference: currentSnapshot.grossamount_difference, 
             commission_difference: currentSnapshot.commission_difference, approval_status: currentSnapshot.approval_status, 
-            active_status: true, time: currentSnapshot.time, client_id: currentSnapshot.client_id, user_id: currentSnapshot.user_id}) //insert columns 
+            time: currentSnapshot.time, client_id: currentSnapshot.client_id, user_id: currentSnapshot.user_id}) //insert columns 
 }
 
 export async function snapshot(configID){
