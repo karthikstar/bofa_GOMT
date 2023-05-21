@@ -1,9 +1,19 @@
-### Tech Stack:
-### Frontend: NextJS, TailwindCSS
-### Backend: NextJS, Supabase
-### Deployment: Vercel
+# GMOT Trade Processing Configuration Tool
+<p align="center">
+<img width="700" alt="Screenshot 2023-05-22 at 1 01 51 AM" src="https://github.com/karthikstar/bofa_GOMT/assets/64301417/6394e390-04e0-4e92-9602-d6d822edd30c">
+</p>
 
-### Presentation Link: https://entuedu-my.sharepoint.com/:p:/g/personal/ngwe0105_e_ntu_edu_sg/EWBW5w3BGUBCgPdHzcVjMSABfcX0WBKY200HDmDvO0nRbw?e=U2hK74
+
+### Problem Statement
+<img width="500" alt="Screenshot 2023-05-22 at 1 03 06 AM" src="https://github.com/karthikstar/bofa_GOMT/assets/64301417/53463da4-82f7-4798-83fd-fe1f208d13dd" align="center">
+
+### Tech Stack:
+- Frontend: NextJS, TailwindCSS
+- Backend: NextJS, Supabase
+- Deployment: Vercel
+
+### Presentation Link: 
+https://entuedu-my.sharepoint.com/:p:/g/personal/ngwe0105_e_ntu_edu_sg/EWBW5w3BGUBCgPdHzcVjMSABfcX0WBKY200HDmDvO0nRbw?e=U2hK74
 
 ### Deployment: Vercel
 
