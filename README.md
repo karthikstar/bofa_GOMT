@@ -15,7 +15,7 @@
 ### Presentation Link: 
 https://entuedu-my.sharepoint.com/:p:/g/personal/ngwe0105_e_ntu_edu_sg/EWBW5w3BGUBCgPdHzcVjMSABfcX0WBKY200HDmDvO0nRbw?e=U2hK74
 
-### Deployment: Vercel
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
